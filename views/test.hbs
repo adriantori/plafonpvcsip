@@ -1,0 +1,32 @@
+<div class="container">
+
+    <h1></i>Open, real-time and historical air quality data</h1>
+
+    <hr>
+
+    <div class="row" style="background-color: #ddd" id="data" style="background-color: #fe8000">
+    </div>
+
+    <h6 style="padding-bottom: 25px">Source: This data is licensed under the Creative Commons Attribution 4.0 Generic License. It is attributed to OpenAQ.
+    The software is licensed as below with The MIT License.</h6>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var url = "https://api.openaq.org/v1/countries?order_by=count&sort=desc";
+
+  $.getJSON(url, function (data) {
+
+    $.each(data.results, function(i, result) {
+      $('#data').append(
+          $('<h2 class="col-md-4">').text(result.name),
+          $('<div class="col-md-4">').text("Code = " + result.code),
+          $('<div class="col-md-4">').text("Score = " + result.count),
+        );
+    });
+
+  });
+    </script>

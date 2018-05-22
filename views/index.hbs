@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row" id="data">
+    <!--generate items-->
+  </div>
+</div>
+<!--
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">" + cars[i] + "</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+-->
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var url = "https://api.openaq.org/v1/countries?order_by=count&sort=desc";
+
+  $.getJSON(url, function (data) {
+
+    $.each(data.results, function(i, result) {
+      $('#data').append(
+        '<div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">'+
+        '<div class="card h-100">'+
+        '<img class="card-img-top" src="http://www.altinawildlife.com/wp-content/uploads/2016/10/Google-app-icon-small.png" alt="Card image cap">'+
+        '<div class="card-body">'+
+        '<h5 class="card-title">' + result.name + '</h5>' +
+        '<p class="card-text">'+ result.code + '</p>' +
+        '<a href="#" class="btn btn-primary">'+ result.count +
+        '</div>'+
+        '</div>'+
+        '</div>');
+    });
+
+  });
+    </script>
